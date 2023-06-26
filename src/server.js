@@ -6,6 +6,7 @@ const bcrybt = require('bcrypt')
 const { User } = require("./moduls")
 const base64 = require('base-64')
 const signin = require("./middleware/signin")
+const bearerChecker = require("./middleware/bearerChecker")
 
 app.use(cors())
 app.use(express.json())
@@ -16,6 +17,18 @@ app.get('/' , (req,res) =>{
           message : 'Home page'
      })
 })
+
+app.get('/order' ,bearerChecker, (req , res) =>{
+     if(!req.data){
+          res.status(200).json({
+               message : 'you dont have the access to this page'
+          })
+     }
+     res.status(200).json({
+          message : 'you have the access to this page'
+     })
+})
+
 app.post('/signup' , async (req,res) =>{
      const {username , password} = req.body
      const encrybt = await bcrybt.hash(password , 5)
@@ -29,15 +42,10 @@ app.post('/signup' , async (req,res) =>{
      })
 })
 app.post('/signin' , signin , (req,res) =>{
-     // const auth = req.headers.authorization.split(" ").pop()
-     // const [username , password] = base64.decode(auth).split(':')
 
-     // const checkUser = await User.findOne({where :{username}})
-     // const isValid = await bcrybt.compare(password , checkUser.password)
-
-     if(req.valid) {
+     if(req.data) {
           res.status(200).json({
-               user : req.user,
+               user : req.data,
                message :'This user is Authorized!!!'
           })
         } else {
