@@ -17,7 +17,7 @@ describe('server test' , () => {
      })
 
      it('signup test' , async () =>{
-          const name = 'ehab_test35'
+          const name = 'ehab_test101'
           const res = await muke.post('/signup').send({
                username: name,
                password : '123123'
@@ -29,11 +29,11 @@ describe('server test' , () => {
 
      })
 
-    const base = base64.encode('ehab_test12:123123') 
+    const base = base64.encode('ehab_test101:123123') 
      it('signin test' , async () =>{
           const res = await muke.post('/signin').set('Authorization', `Basic ${base}`)
 
-          // console.log(JSON.parse(res.text).message);
+          console.log(res);
           expect(res.statusCode).toBe(200)
           expect(JSON.parse(res.text).message).toBe('This user is Authorized!!!')
 
