@@ -29,13 +29,13 @@ describe('server test' , () => {
 
      })
 
-//     const base = base64.encode('ehab_test101:123123') 
-//      it('signin test' , async () =>{
-//           const res = await muke.post('/signin').set('Authorization', `Basic ${base}`)
+    const base = base64.encode('ehab_test101:123123') 
+     it('signin test' , async () =>{
+          const res = await muke.post('/signin').set('Authorization', `Basic ${base}`)
 
-//           console.log(res);
-//           expect(res.statusCode).toBe(200)
-//           expect(JSON.parse(res.text).message).toBe('This user is Authorized!!!')
+          console.log(res);
+          expect(res.statusCode).toBe(200)
+          expect(JSON.parse(res.text).message).toBe('This user is Authorized!!!')
 
-//      })
+     })
 })
