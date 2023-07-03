@@ -7,8 +7,6 @@ const { User } = require("./moduls/user.model")
 require('dotenv').config()
 
 
-
-
 router.get('/' , (req,res) =>{
      res.status(200).json({
           message : 'Home page'
