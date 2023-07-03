@@ -1,7 +1,7 @@
 const { sequelize, DataTypes } = require(".")
 
 
-const User = sequelize.define('userlab2' , {
+const User = sequelize.define('userla' , {
      username:{
           type : DataTypes.STRING,
           allowNull : false,
