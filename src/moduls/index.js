@@ -9,19 +9,6 @@ const postgres_url = process.env.NODE_ENV === 'test' ? 'sqlite:memory:' : proces
 
 const sequelize = new Sequelize(postgres_url , {})
 
-const User = sequelize.define('userlab1' , {
-     username:{
-          type : DataTypes.STRING,
-          allowNull : false,
-     },
-     password : {
-          type : DataTypes.STRING,
-          allowNull : false
-     },
-     token :{
-          type : DataTypes.VIRTUAL
-     }
-})
 
 
 User.basicChecker = async function (username, password)  {
@@ -51,5 +38,5 @@ User.beareCheacker =async function (token){
 
 module.exports = {
      sequelize,
-     User
+     DataTypes
 }
