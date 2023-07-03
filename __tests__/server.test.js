@@ -3,7 +3,8 @@ const {app} = require('../src/server')
 const muke = supertest(app)
 require('dotenv').config()
 const base64 = require("base-64")
-const { sequelize } = require('../src/moduls')
+const { sequelize } = require('../src/moduls') 
+
 
 
 
