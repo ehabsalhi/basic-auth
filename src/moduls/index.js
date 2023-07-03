@@ -11,29 +11,6 @@ const sequelize = new Sequelize(postgres_url , {})
 
 
 
-User.basicChecker = async function (username, password)  {
-
-     const checkUser = await User.findOne({where :{username}})
-     const isValid = await  bcrypt.compare(password , checkUser.password)
-     if(isValid){
-
-          const parsToken = jwt.sign({username : checkUser.username , password : checkUser.password} ,secretKey )
-          return{
-               userInfo : checkUser,
-              Token : parsToken
-          }
-     }
-}
-
-User.beareCheacker =async function (token){
-     const verfyToken = jwt.verify(token , secretKey)
-     const user = await User.findOne({where :{username : verfyToken.username}})
-     if(user.username){
-          return user
-     }
-     throw new Error(' no token ') 
-}
-
 
 
 module.exports = {
