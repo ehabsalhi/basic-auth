@@ -1,7 +1,6 @@
 const base64 = require('base-64')
 const bcrybt = require('bcrypt')
-const { User } = require('../moduls')
-
+const { User } = require('../moduls/user.model')
 
 module.exports = async(req , res , next) => {
      const auth = req.headers.authorization.split(" ").pop()
