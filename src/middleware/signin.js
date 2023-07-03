@@ -15,5 +15,4 @@ module.exports = async(req , res , next) => {
      req.valid = isValid
      req.user = checkUser
      next()
-
 }
